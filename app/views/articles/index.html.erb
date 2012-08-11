@@ -1,0 +1,10 @@
+<% if @articles.empty? %>
+  <p>Sorry nothing here</p>
+<% else %>
+  <% @articles.each do |a| %>
+    <h1><%= link_to a.title, slugged_path(a.slug) %></h1>
+    <div>
+      <%= simple_format(a.content) %>
+    </div>
+  <% end %>
+<% end %>

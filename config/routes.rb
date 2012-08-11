@@ -1,5 +1,12 @@
 RailsBlog::Application.routes.draw do
-  # The priority is based upon order of creation:
+
+  resources :articles
+
+  match "/:slug" => "articles#show", as: "slugged"
+
+  root to: "articles#index"
+
+# The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
