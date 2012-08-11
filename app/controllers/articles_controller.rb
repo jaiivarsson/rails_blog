@@ -5,11 +5,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    if params.include? :id
-      @article = Article.find(params[:id])
-    else
-      @article = Article.find_by_slug(params[:slug])
-    end
+    find_by_slug_or_id
   end
 
   def new
@@ -39,4 +35,13 @@ class ArticlesController < ApplicationController
 
   end
 
+  private
+
+  def find_by_slug_or_id
+    if params.include? :id
+      @article = Article.find(params[:id])
+    else
+      @article = Article.find_by_slug(params[:slug])
+    end
+  end
 end
